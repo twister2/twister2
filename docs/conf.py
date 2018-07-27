@@ -283,3 +283,4 @@ texinfo_documents = [
 #texinfo_no_detailmenu = False
 
 html_theme = "sphinx_rtd_theme"
+html_theme_path = ["_themes", ]
