@@ -1,0 +1,49 @@
+# the package uri
+twister2.system.package.uri: "${TWISTER2_DIST}/twister2-core.tar.gz"
+# the resource manager class
+twister2.class.state.manager: "edu.iu.dsc.tws.rsched.statemanagers.fs.SharedFileSystemStateManager"
+# launcher class for aurora submission
+twister2.class.launcher: edu.iu.dsc.tws.rsched.schedulers.k8s.KubernetesLauncher
+# the uplaoder class
+twister2.class.uploader: "edu.iu.dsc.tws.rsched.uploaders.scp.ScpUploader"
+# twister2.class.uploader: "edu.iu.dsc.tws.rsched.uploaders.NullUploader"
+# twister2.class.uploader: "edu.iu.dsc.tws.rsched.uploaders.localfs.LocalFileSystemUploader"
+
+# container class to run in workers
+# twister2.job.basic.container.class: "edu.iu.dsc.tws.examples.basic.BasicK8sWorker"
+twister2.job.basic.container.class: "edu.iu.dsc.tws.examples.basic.comms.BaseBroadcastCommunication"
+
+# image pull policy, by default is IfNotPresent
+# it could also be Always
+# kubernetes.image.pull.policy: "Always"
+
+# Statically bind workers to CPUs
+# Workers do not move from the CPU they are started during computation
+# twister2.cpu_per_container has to be an integer
+# by default, its value is false
+# kubernetes.bind.worker.to.cpu: true
+
+# kubernetes can map workers to nodes as specified by the user
+# default value is false
+# kubernetes.worker.to.node.mapping: true
+
+# the label key on the nodes that will be used to map workers to nodes
+kubernetes.worker.mapping.key: "kubernetes.io/hostname"
+
+# operator to use when mapping workers to nodes based on key value
+# possible values: In, NotIn, Exists, DoesNotExist, Gt, Lt
+# Exists/DoesNotExist checks only the existence of the specified key in the node.
+# Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#node-affinity-beta-feature
+kubernetes.worker.mapping.operator: "In"
+
+# values for the mapping key
+# when the mapping operator is either Exists or DoesNotExist, values list must be empty.
+kubernetes.worker.mapping.values: ['e012', 'e013']
+# kubernetes.worker.mapping.values: []
+
+# uniform worker mapping
+# Valid values: all-same-node, all-separate-nodes, none
+# default value is none
+# kubernetes.worker.mapping.uniform: "all-same-node"
+
+
