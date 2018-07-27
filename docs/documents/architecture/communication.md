@@ -1,5 +1,7 @@
-TCP Communication
-=================
+Communication
+******
+
+#TCP Communication
 
 TCP functionality is implemented in the common package. It is based on non blocking network IO model
 with Java NIO.
@@ -14,7 +16,7 @@ which communication.
 
 Each TCP message is preceded by the following header.
 
-```bash
+```
   4 byte integer length \ 4 byte integer edge 
 ```
 
@@ -40,7 +42,7 @@ message header.
 
 So each message is preceded by
 
-```bash
+```
   4 byte integer length \ 4 byte integer edge |4 byte request id length | request id | 4 byte message name length | message name  
 ```
 
@@ -55,7 +57,7 @@ fixed data buffers to transfer and reveive data.
 
 Each TCP message is preceded by the following header.
 
-```bash
+```
   4 byte integer length \ 4 byte integer edge 
 ```
 
@@ -66,7 +68,7 @@ are fixed for sending and receiving.
 
 Here is a psuedo code of how to use the messaging mode.
 
-```bash
+```
   TCPChannel channel = new TCPChannel(...)
   channel.startListening()
   
