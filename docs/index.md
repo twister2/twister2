@@ -10,6 +10,7 @@ Contents:
 
 .. toctree::
    :maxdepth: 2
+   
    documents/architecture/communication
    documents/architecture/Main-Components
    documents/common/Logging
