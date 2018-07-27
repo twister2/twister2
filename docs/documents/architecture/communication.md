@@ -1,7 +1,7 @@
 Communication
 ******
 
-#TCP Communication
+## TCP Communication
 
 TCP functionality is implemented in the common package. It is based on non blocking network IO model
 with Java NIO.
@@ -16,12 +16,11 @@ which communication.
 
 Each TCP message is preceded by the following header.
 
-```
-  4 byte integer length \ 4 byte integer edge 
-```
 
-Request Response Mode
-----------------------
+	4 byte integer length \ 4 byte integer edge 
+
+
+## Request Response Mode
 
 In Request/Response model, we have a TCP Server and a TCP client which works using requests and
 responses. Requests and responses are always protocol buffer messages.
@@ -42,24 +41,22 @@ message header.
 
 So each message is preceded by
 
-```
-  4 byte integer length \ 4 byte integer edge |4 byte request id length | request id | 4 byte message name length | message name  
-```
+	4 byte integer length \ 4 byte integer edge |4 byte request id length | request id | 4 byte message name length | message name  
 
 When we send a message, a callback is registered to receive the responses. The requests and responces
 are matched using the unique request id generated for each message.
 
-Messaging Mode
----------------
+## Messaging Mode
+
 
 In messaging mode, the tcp network sends data buffers in Java ByteBuffer objects. It uses set of 
 fixed data buffers to transfer and reveive data.
 
 Each TCP message is preceded by the following header.
 
-```
-  4 byte integer length \ 4 byte integer edge 
-```
+
+	4 byte integer length \ 4 byte integer edge 
+
 
 
 In this mode, receiving buffers must be posted to the tranport and the when it receives a message, 
